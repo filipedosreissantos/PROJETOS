@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gold-700/20;
+  }
+  
+  body {
+    @apply bg-tomb-900 text-papyrus-100 font-body antialiased;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-tomb-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold-700/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold-600/70;
+  }
+}
+
+@layer components {
+  /* Egyptian Border Decorations */
+  .egyptian-border {
+    @apply relative;
+  }
+
+  .egyptian-border::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: 
+      linear-gradient(90deg, transparent 0%, #D4AF37 50%, transparent 100%);
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: top;
+    opacity: 0.5;
+  }
+
+  .egyptian-border::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: 
+      linear-gradient(90deg, transparent 0%, #D4AF37 50%, transparent 100%);
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    opacity: 0.5;
+  }
+
+  /* Gold Shimmer Effect */
+  .gold-shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .gold-shimmer::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.2) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Papyrus Card */
+  .papyrus-card {
+    @apply bg-tomb-800/90 rounded-lg;
+    background-image: 
+      linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+      linear-gradient(315deg, rgba(30, 90, 175, 0.05) 0%, transparent 50%);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  }
+
+  /* Egyptian Button */
+  .btn-egyptian {
+    @apply relative px-6 py-3 font-egyptian text-sm uppercase tracking-wider;
+    @apply bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600;
+    @apply text-tomb-900 font-semibold;
+    @apply rounded-sm;
+    @apply transition-all duration-300;
+    @apply hover:shadow-gold hover:scale-105;
+    @apply active:scale-95;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-egyptian::before {
+    content: '';
+    @apply absolute inset-0 rounded-sm;
+    @apply border-2 border-gold-400/50;
+  }
+
+  .btn-egyptian-outline {
+    @apply relative px-6 py-3 font-egyptian text-sm uppercase tracking-wider;
+    @apply bg-transparent border-2 border-gold-500;
+    @apply text-gold-400 font-semibold;
+    @apply rounded-sm;
+    @apply transition-all duration-300;
+    @apply hover:bg-gold-500/10 hover:border-gold-400;
+  }
+
+  /* Message Bubbles */
+  .message-sent {
+    @apply bg-gradient-to-br from-lapis-600 to-lapis-700;
+    @apply text-papyrus-100;
+    @apply rounded-2xl rounded-br-sm;
+    box-shadow: 0 2px 8px rgba(30, 90, 175, 0.3);
+  }
+
+  .message-received {
+    @apply bg-tomb-700;
+    @apply text-papyrus-100;
+    @apply rounded-2xl rounded-bl-sm;
+    @apply border border-gold-700/20;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Avatar with Egyptian ring */
+  .avatar-egyptian {
+    @apply relative rounded-full;
+    @apply ring-2 ring-gold-500/50 ring-offset-2 ring-offset-tomb-800;
+  }
+
+  /* Search Input */
+  .search-egyptian {
+    @apply w-full px-4 py-3 pl-12;
+    @apply bg-tomb-700/50 border border-gold-700/30;
+    @apply rounded-lg;
+    @apply text-papyrus-100 placeholder-papyrus-600;
+    @apply focus:outline-none focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20;
+    @apply transition-all duration-300;
+  }
+
+  /* Thread Item */
+  .thread-item {
+    @apply flex items-center gap-3 p-3 rounded-lg cursor-pointer;
+    @apply transition-all duration-200;
+    @apply hover:bg-tomb-700/50;
+    @apply border border-transparent;
+  }
+
+  .thread-item.active {
+    @apply bg-tomb-700/70 border-gold-600/30;
+    box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.05);
+  }
+
+  /* Unread Badge */
+  .badge-unread {
+    @apply inline-flex items-center justify-center;
+    @apply min-w-[1.25rem] h-5 px-1.5;
+    @apply text-xs font-bold;
+    @apply bg-gradient-to-r from-gold-500 to-gold-600;
+    @apply text-tomb-900;
+    @apply rounded-full;
+    @apply shadow-gold;
+  }
+
+  /* Typing Indicator */
+  .typing-indicator {
+    @apply flex items-center gap-1 px-4 py-2;
+    @apply bg-tomb-700 rounded-2xl rounded-bl-sm;
+    @apply border border-gold-700/20;
+  }
+
+  .typing-dot {
+    @apply w-2 h-2 rounded-full bg-gold-500;
+    animation: typing 1.4s infinite;
+  }
+
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply animate-pulse bg-tomb-700/50 rounded;
+  }
+
+  .skeleton-gold {
+    @apply relative overflow-hidden bg-tomb-700/50 rounded;
+  }
+
+  .skeleton-gold::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.1),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Chat Input Area */
+  .chat-input-area {
+    @apply relative;
+    @apply bg-tomb-800/95;
+    @apply border-t border-gold-700/20;
+    @apply backdrop-blur-sm;
+  }
+
+  .chat-input {
+    @apply w-full px-4 py-3 pr-24;
+    @apply bg-tomb-700/50 border border-gold-700/30;
+    @apply rounded-xl;
+    @apply text-papyrus-100 placeholder-papyrus-600;
+    @apply focus:outline-none focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/20;
+    @apply resize-none;
+    @apply transition-all duration-300;
+  }
+
+  /* Scroll to Bottom Button */
+  .scroll-to-bottom {
+    @apply absolute bottom-24 right-6;
+    @apply p-3 rounded-full;
+    @apply bg-tomb-700/90 border border-gold-600/30;
+    @apply text-gold-400;
+    @apply shadow-tomb;
+    @apply transition-all duration-300;
+    @apply hover:bg-tomb-600 hover:border-gold-500/50;
+    @apply hover:shadow-gold;
+  }
+
+  /* Egyptian Divider */
+  .divider-egyptian {
+    @apply flex items-center justify-center my-4;
+  }
+
+  .divider-egyptian::before,
+  .divider-egyptian::after {
+    content: '';
+    @apply flex-1 h-px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.3),
+      transparent
+    );
+  }
+
+  .divider-egyptian span {
+    @apply px-4 text-xs text-papyrus-500 font-egyptian uppercase tracking-wider;
+  }
+
+  /* Hieroglyph decoration */
+  .hieroglyph-decoration {
+    @apply text-gold-600/20 font-egyptian text-3xl select-none;
+  }
+}
+
+@layer utilities {
+  .text-shadow-gold {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+
+  .gradient-text-gold {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gold-400 via-gold-300 to-gold-400;
+  }
+
+  .mask-fade-top {
+    mask-image: linear-gradient(to bottom, transparent, black 20px);
+  }
+
+  .mask-fade-bottom {
+    mask-image: linear-gradient(to top, transparent, black 20px);
+  }
+}
