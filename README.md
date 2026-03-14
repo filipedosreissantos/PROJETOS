@@ -1,6 +1,6 @@
 # PROJETOS - Portfólio Front-end
 
-Repositório monorepo contendo três projetos front-end modernos construídos com React, TypeScript e Tailwind CSS.
+Repositório monorepo contendo quatro projetos front-end modernos construídos com React, TypeScript e Tailwind CSS.
 
 ## Projetos
 
@@ -9,6 +9,7 @@ Repositório monorepo contendo três projetos front-end modernos construídos co
 | [Admin Dashboard](./admin-dashboard) | Dashboard administrativo com autenticação e CRUD | Em breve |
 | [NEONSHOP](./ecommerce-front) | E-commerce futurista com carrinho e checkout | Em breve |
 | [Nile Chat](./chat-ui) | Chat em tempo real com tema egípcio | Em breve |
+| [Observability Kit](./observability-kit) | Solução de observabilidade para React | Em breve |
 
 ---
 
@@ -55,6 +56,21 @@ Aplicação de chat em tempo real com tema egípcio elegante (ouro, lápis-lazú
 
 ---
 
+## 𝒞 Observability Kit
+
+Solução completa de observabilidade para aplicações React com design temático egípcio ("Temple of Insights").
+
+### Features
+- **Error Boundary** - Tratamento gracioso de erros com retry
+- **Logger Sentry-like** - Sistema de logging com contexto automático
+- **Web Vitals** - Monitoramento de Core Web Vitals (LCP, FID, CLS, FCP, TTFB)
+- **Páginas de Erro** - 404, 500 e offline com design egípcio
+- **Dashboard Admin** - Visualização de logs e métricas de performance
+- **Sanitização de Dados** - Redação automática de dados sensíveis
+- **Correlação de Sessão** - Todos os eventos vinculados por session ID
+
+---
+
 ## 🛠️ Tech Stack Compartilhada
 
 | Tecnologia | Versão | Uso |
@@ -77,6 +93,10 @@ Aplicação de chat em tempo real com tema egípcio elegante (ouro, lápis-lazú
 - **TanStack Query v5** - Data fetching, cache e persistência
 - **Zustand** - Gerenciamento de estado UI
 - **FakeSocket** - Simulação de WebSocket (EventEmitter pattern)
+
+### Adicional (Observability Kit)
+- **Web Vitals** - Biblioteca oficial para métricas de performance
+- **UUID** - Geração de IDs únicos para sessões e eventos
 
 ---
 
@@ -129,6 +149,19 @@ npm install
 npm run dev
 ```
 
+### Observability Kit
+
+```bash
+# Entrar no diretório
+cd observability-kit
+
+# Instalar dependências
+npm install
+
+# Executar em modo desenvolvimento
+npm run dev
+```
+
 ---
 
 ## 📁 Estrutura dos Projetos
@@ -156,14 +189,21 @@ PROJETOS/
 │   │   └── types/          # TypeScript types
 │   └── ...
 │
-└── chat-ui/
+├── chat-ui/
+│   ├── src/
+│   │   ├── components/     # Componentes UI (Chat, Message, Thread)
+│   │   ├── hooks/          # Custom hooks (useMessages, useThreads)
+│   │   ├── lib/            # FakeSocket, queryKeys, utils
+│   │   ├── pages/          # Páginas da aplicação
+│   │   ├── store/          # Zustand stores
+│   │   └── types/          # TypeScript types
+│   └── ...
+│
+└── observability-kit/
     ├── src/
-    │   ├── components/     # Componentes UI (Chat, Message, Thread)
-    │   ├── hooks/          # Custom hooks (useMessages, useThreads)
-    │   ├── lib/            # FakeSocket, queryKeys, utils
-    │   ├── pages/          # Páginas da aplicação
-    │   ├── store/          # Zustand stores
-    │   └── types/          # TypeScript types
+    │   ├── components/     # ErrorBoundary, Layout, Admin
+    │   ├── lib/            # Logger, WebVitals, Config
+    │   └── pages/          # Home, Demo, Observability
     └── ...
 ```
 
@@ -189,6 +229,12 @@ cd chat-ui
 npm test              # Executar testes
 npm run test:ui       # Interface visual
 npm run test:coverage # Relatório de cobertura
+
+# Observability Kit
+cd observability-kit
+npm test              # Executar testes
+npm run test:run      # Executar testes uma vez
+npm run test:coverage # Relatório de cobertura
 ```
 
 ---
@@ -208,6 +254,11 @@ npm run preview  # Visualizar build local
 
 # Nile Chat
 cd chat-ui
+npm run build
+npm run preview  # Visualizar build local
+
+# Observability Kit
+cd observability-kit
 npm run build
 npm run preview  # Visualizar build local
 ```
@@ -242,6 +293,16 @@ npm run preview  # Visualizar build local
 | `npm run build` | Build de produção |
 | `npm run test` | Executa testes |
 | `npm run test:ui` | Interface visual de testes |
+| `npm run test:coverage` | Relatório de cobertura |
+| `npm run lint` | Verifica código com ESLint |
+
+### Observability Kit
+| Script | Descrição |
+|--------|-----------|
+| `npm run dev` | Inicia o servidor de desenvolvimento |
+| `npm run build` | Build de produção |
+| `npm run test` | Executa testes em modo watch |
+| `npm run test:run` | Executa testes uma vez |
 | `npm run test:coverage` | Relatório de cobertura |
 | `npm run lint` | Verifica código com ESLint |
 
