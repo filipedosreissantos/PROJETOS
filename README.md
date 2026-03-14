@@ -1,6 +1,6 @@
-# PROJETOS - Portfólio Front-end
+# PROJETOS - Portfólio Full-Stack
 
-Repositório monorepo contendo quatro projetos front-end modernos construídos com React, TypeScript e Tailwind CSS.
+Repositório monorepo contendo cinco projetos modernos construídos com React, TypeScript, Python e tecnologias modernas.
 
 ## Projetos
 
@@ -10,6 +10,7 @@ Repositório monorepo contendo quatro projetos front-end modernos construídos c
 | [NEONSHOP](./ecommerce-front) | E-commerce futurista com carrinho e checkout | Em breve |
 | [Nile Chat](./chat-ui) | Chat em tempo real com tema egípcio | Em breve |
 | [Observability Kit](./observability-kit) | Solução de observabilidade para React | Em breve |
+| [RAG Assistant](./rag-assistant) | Assistente IA para documentos PDF com RAG | Em breve |
 
 ---
 
@@ -71,6 +72,23 @@ Solução completa de observabilidade para aplicações React com design temáti
 
 ---
 
+## 🤖 RAG Assistant
+
+Assistente inteligente para documentos PDF com Retrieval-Augmented Generation (RAG).
+
+### Features
+- **Upload de PDFs** - Processamento assíncrono com extração de texto
+- **Busca Semântica** - Embeddings vetoriais com pgvector
+- **Chat Inteligente** - Respostas baseadas em evidências do documento
+- **Citações Precisas** - Referência a documento e página
+- **Detecção de Baixa Confiança** - Resposta "não sei" quando apropriado
+- **Métricas** - Latência, custo e uso de tokens
+
+### Credenciais Demo
+- **Senha Admin:** admin123
+
+---
+
 ## 🛠️ Tech Stack Compartilhada
 
 | Tecnologia | Versão | Uso |
@@ -97,6 +115,13 @@ Solução completa de observabilidade para aplicações React com design temáti
 ### Adicional (Observability Kit)
 - **Web Vitals** - Biblioteca oficial para métricas de performance
 - **UUID** - Geração de IDs únicos para sessões e eventos
+
+### RAG Assistant (Full-Stack)
+- **Backend:** Python 3.11+, FastAPI, SQLAlchemy, Alembic
+- **Frontend:** Next.js 14, TypeScript
+- **Database:** PostgreSQL 16 + pgvector
+- **AI:** OpenAI API (GPT-4o-mini, text-embedding-3-small)
+- **Infra:** Docker, Docker Compose
 
 ---
 
@@ -162,6 +187,26 @@ npm install
 npm run dev
 ```
 
+### RAG Assistant
+
+```bash
+# Entrar no diretório
+cd rag-assistant
+
+# Copiar arquivo de ambiente
+cp .env.example .env
+
+# Editar .env e adicionar OPENAI_API_KEY
+
+# Subir containers (PostgreSQL + Backend + Frontend)
+docker compose up -d
+
+# Acessar:
+# Chat: http://localhost:3000/chat
+# Admin: http://localhost:3000/login
+# API Docs: http://localhost:8000/docs
+```
+
 ---
 
 ## 📁 Estrutura dos Projetos
@@ -199,12 +244,21 @@ PROJETOS/
 │   │   └── types/          # TypeScript types
 │   └── ...
 │
-└── observability-kit/
-    ├── src/
-    │   ├── components/     # ErrorBoundary, Layout, Admin
-    │   ├── lib/            # Logger, WebVitals, Config
-    │   └── pages/          # Home, Demo, Observability
-    └── ...
+├── observability-kit/
+│   ├── src/
+│   │   ├── components/     # ErrorBoundary, Layout, Admin
+│   │   ├── lib/            # Logger, WebVitals, Config
+│   │   └── pages/          # Home, Demo, Observability
+│   └── ...
+│
+└── rag-assistant/
+    ├── backend/
+    │   ├── app/            # FastAPI (api, models, services)
+    │   ├── alembic/        # Migrações do banco
+    │   └── tests/          # Testes pytest
+    ├── frontend/
+    │   └── src/            # Next.js (app, lib, types)
+    └── docker-compose.yml
 ```
 
 ---
@@ -235,6 +289,10 @@ cd observability-kit
 npm test              # Executar testes
 npm run test:run      # Executar testes uma vez
 npm run test:coverage # Relatório de cobertura
+
+# RAG Assistant
+cd rag-assistant
+docker compose exec backend pytest  # Testes do backend
 ```
 
 ---
@@ -261,6 +319,10 @@ npm run preview  # Visualizar build local
 cd observability-kit
 npm run build
 npm run preview  # Visualizar build local
+
+# RAG Assistant
+cd rag-assistant
+docker compose up -d --build  # Build e iniciar containers
 ```
 
 ---
@@ -305,6 +367,14 @@ npm run preview  # Visualizar build local
 | `npm run test:run` | Executa testes uma vez |
 | `npm run test:coverage` | Relatório de cobertura |
 | `npm run lint` | Verifica código com ESLint |
+
+### RAG Assistant
+| Comando | Descrição |
+|---------|-----------|
+| `docker compose up -d` | Inicia todos os serviços |
+| `docker compose down` | Para todos os serviços |
+| `docker compose logs -f` | Ver logs em tempo real |
+| `docker compose exec backend pytest` | Executar testes |
 
 ---
 

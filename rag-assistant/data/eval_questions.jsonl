@@ -1,0 +1,10 @@
+{"question": "Qual é o objetivo principal deste documento?", "expected_abstain": false}
+{"question": "Quais são os principais pontos mencionados no capítulo 1?", "expected_abstain": false}
+{"question": "Quem são os autores do documento?", "expected_abstain": false}
+{"question": "Qual a data de publicação do documento?", "expected_abstain": false}
+{"question": "Quais são as conclusões apresentadas?", "expected_abstain": false}
+{"question": "Qual é a metodologia utilizada no estudo?", "expected_abstain": false}
+{"question": "Quais são as limitações do estudo?", "expected_abstain": false}
+{"question": "Qual é o preço do Bitcoin hoje?", "expected_abstain": true}
+{"question": "Quem é o presidente dos Estados Unidos?", "expected_abstain": true}
+{"question": "Qual é a previsão do tempo para amanhã?", "expected_abstain": true}

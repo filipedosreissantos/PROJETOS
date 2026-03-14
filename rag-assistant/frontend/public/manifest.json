@@ -1,0 +1,9 @@
+{
+  "name": "RAG Assistant",
+  "short_name": "RAG",
+  "description": "Assistente RAG para documentos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6"
+}
