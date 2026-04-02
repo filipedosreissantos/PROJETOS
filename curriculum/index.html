@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Filipe dos Reis Santos — Currículo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & base ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 14px; }
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      background: #060c18;
+      color: #0f172a;
+      min-height: 100vh;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Print / A4 ────────────────────────────────── */
+    @page { size: A4; margin: 10mm; }
+    @media print {
+      body { background: #fff; }
+      .shell { padding: 0; }
+      .page {
+        width: 100%; max-width: 100%;
+        margin: 0; border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    /* ── Outer shell (screen only) ─────────────────── */
+    .shell {
+      padding: 40px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── A4 page card ──────────────────────────────── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.04),
+        0 40px 100px rgba(0,0,0,.55),
+        0 0 80px rgba(59,130,246,.08);
+    }
+
+    /* ══════════════════════════════════════════════════
+       HEADER
+    ══════════════════════════════════════════════════ */
+    .header {
+      position: relative;
+      overflow: hidden;
+      padding: 32px 32px 28px;
+      background: linear-gradient(135deg, #0a0f1e 0%, #0d1829 50%, #0a1020 100%);
+      color: #e2e8f0;
+    }
+    /* Decorative blobs */
+    .header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 700px 300px at 5% -10%, rgba(59,130,246,.30) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 250px at 92% 110%, rgba(14,165,233,.22) 0%, transparent 55%),
+        radial-gradient(ellipse 400px 200px at 50% 120%, rgba(139,92,246,.12) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    /* Subtle grid */
+    .header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .header > * { position: relative; z-index: 1; }
+
+    /* Name + title row */
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -.3px;
+      line-height: 1.1;
+      background: linear-gradient(90deg, #ffffff 0%, #93c5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .role {
+      margin-top: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: rgba(147,197,253,.85);
+      letter-spacing: .01em;
+    }
+
+    /* Availability badge */
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(34,197,94,.25);
+      background: rgba(34,197,94,.08);
+      font-size: 11px;
+      font-weight: 700;
+      color: #86efac;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .availability .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 4px #4ade80; opacity: 1; }
+      50%      { box-shadow: 0 0 10px #4ade80; opacity: .7; }
+    }
+
+    /* Contact grid */
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 20px;
+      margin-top: 16px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+    }
+    .contact-icon {
+      width: 22px; height: 22px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.10);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 12px; height: 12px; fill: none; stroke: #93c5fd; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-label { opacity: .6; font-size: 10.5px; }
+    .contact-value { font-weight: 700; color: #f1f5f9; }
+    .contact-value.link:hover { color: #93c5fd; }
+
+    /* Skill chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 18px;
+    }
+    .chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(241,245,249,.90);
+      letter-spacing: .01em;
+      transition: background .15s;
+    }
+    .chip.primary {
+      background: rgba(59,130,246,.18);
+      border-color: rgba(59,130,246,.35);
+      color: #93c5fd;
+    }
+
+    /* ══════════════════════════════════════════════════
+       BODY LAYOUT
+    ══════════════════════════════════════════════════ */
+    .body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      min-height: calc(297mm - 175px);
+      background: #f8fafc;
+    }
+
+    /* ── Sidebar ───────────────────────────────────── */
+    .sidebar {
+      background: #f1f5f9;
+      border-right: 1px solid #e2e8f0;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* ── Main ──────────────────────────────────────── */
+    .main {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── Section wrapper ───────────────────────────── */
+    .section {}
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .section-icon {
+      width: 26px; height: 26px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-icon svg { width: 13px; height: 13px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .section-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #1e293b;
+      flex: 1;
+    }
+    .section-line {
+      height: 1px;
+      background: linear-gradient(90deg, #e2e8f0 60%, transparent);
+      flex: 1;
+    }
+
+    /* ── Sidebar sections ──────────────────────────── */
+
+    /* About */
+    .about-text {
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    /* Skills */
+    .skill-group { margin-bottom: 10px; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-group-name {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .skill-tag {
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+    }
+    .skill-tag.hl {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    /* Education */
+    .edu-item {
+      padding: 10px 11px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 8px;
+    }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-degree {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #1e293b;
+      line-height: 1.3;
+    }
+    .edu-school {
+      font-size: 11px;
+      font-weight: 600;
+      color: #3b82f6;
+      margin-top: 2px;
+    }
+    .edu-period {
+      font-size: 10.5px;
+      color: #94a3b8;
+      margin-top: 3px;
+    }
+
+    /* Languages */
+    .lang-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 11px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 6px;
+      font-size: 11.5px;
+    }
+    .lang-row:last-child { margin-bottom: 0; }
+    .lang-name { font-weight: 700; color: #1e293b; }
+    .lang-level {
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .lang-level.native  { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+    .lang-level.adv     { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+    /* ── Main — Summary card ───────────────────────── */
+    .summary-card {
+      padding: 13px 15px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f0f9ff, #eff6ff);
+      border: 1px solid #bfdbfe;
+    }
+    .summary-card p {
+      font-size: 11.5px;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    /* ── Main — Projects ───────────────────────────── */
+    .project-card {
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .project-card:last-child { margin-bottom: 0; }
+
+    .project-top {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .project-accent {
+      width: 4px;
+      flex-shrink: 0;
+      background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    }
+
+    .project-body {
+      padding: 11px 13px;
+      flex: 1;
+    }
+
+    .project-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .project-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .project-stack {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 7px;
+    }
+    .pbadge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+    }
+
+    .project-bullets {
+      margin: 8px 0 0 14px;
+      list-style: none;
+      padding: 0;
+    }
+    .project-bullets li {
+      position: relative;
+      padding-left: 12px;
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+    .project-bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 7px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #93c5fd;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px 13px;
+      border-top: 1px solid #f1f5f9;
+      background: #fafafa;
+    }
+    .plink {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      color: #1d4ed8;
+      transition: background .12s;
+    }
+    .plink svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .project-grid .project-card { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+<div class="shell">
+<div class="page">
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="header">
+    <div class="header-top">
+      <div>
+        <h1 class="name">Filipe dos Reis Santos</h1>
+        <p class="role">Desenvolvedor Front-end · Estágio / Júnior · Remoto · Brasil</p>
+      </div>
+      <div class="availability">
+        <span class="dot"></span>
+        Disponível para oportunidades
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">miguelfilipedosreissantos@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Telefone</div>
+          <div class="contact-value">(73) 98155-8562</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <a class="contact-value link" href="https://linkedin.com/in/filipedosreissantos">linkedin.com/in/filipedosreissantos</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <a class="contact-value link" href="https://github.com/filipedosreissantos">github.com/filipedosreissantos</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="chips">
+      <span class="chip primary">React</span>
+      <span class="chip primary">TypeScript</span>
+      <span class="chip primary">Tailwind CSS</span>
+      <span class="chip">Vite</span>
+      <span class="chip">React Router</span>
+      <span class="chip">TanStack Query</span>
+      <span class="chip">React Hook Form</span>
+      <span class="chip">Zod</span>
+      <span class="chip">Vitest</span>
+      <span class="chip">Git / GitHub</span>
+    </div>
+  </header>
+
+  <!-- ═══════════ BODY ═══════════ -->
+  <div class="body">
+
+    <!-- ─── SIDEBAR ─── -->
+    <aside class="sidebar">
+
+      <!-- About -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#eff6ff;">
+            <svg viewBox="0 0 24 24" style="stroke:#3b82f6;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7s-3.6 7-8 7s-8-3-8-7z"/></svg>
+          </div>
+          <span class="section-title">Sobre</span>
+          <div class="section-line"></div>
+        </div>
+        <p class="about-text">
+          Desenvolvedor Front-end em início de carreira, focado em React + TypeScript e Tailwind CSS.
+          Constrói projetos com cenários reais de produto — dashboard admin, e-commerce e chat — com
+          atenção a UX, acessibilidade, testes e arquitetura de cache/estado.
+        </p>
+      </div>
+
+      <!-- Skills -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#f5f3ff;">
+            <svg viewBox="0 0 24 24" style="stroke:#8b5cf6;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <span class="section-title">Competências</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Front-end</div>
+          <div class="skill-tags">
+            <span class="skill-tag hl">React</span>
+            <span class="skill-tag hl">TypeScript</span>
+            <span class="skill-tag hl">Tailwind</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML / CSS</span>
+            <span class="skill-tag">Vite</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Dados & Estado</div>
+          <div class="skill-tags">
+            <span class="skill-tag hl">TanStack Query</span>
+            <span class="skill-tag">Zustand</span>
+            <span class="skill-tag">React Router</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Formulários</div>
+          <div class="skill-tags">
+            <span class="skill-tag hl">React Hook Form</span>
+            <span class="skill-tag hl">Zod</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Testes</div>
+          <div class="skill-tags">
+            <span class="skill-tag hl">Vitest</span>
+            <span class="skill-tag">Testing Library</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Outras</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">PostgreSQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Ferramentas</div>
+          <div class="skill-tags">
+            <span class="skill-tag hl">Git / GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#f0fdf4;">
+            <svg viewBox="0 0 24 24" style="stroke:#22c55e;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+          </div>
+          <span class="section-title">Formação</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-degree">Engenharia de Software</div>
+          <div class="edu-school">GRAN — Bacharelado</div>
+          <div class="edu-period">set/2025 – set/2029 · Em andamento</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Análise e Desenvolvimento de Sistemas</div>
+          <div class="edu-school">UNOPAR — CST</div>
+          <div class="edu-period">2022 – 2024 · Concluído</div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#fff7ed;">
+            <svg viewBox="0 0 24 24" style="stroke:#f97316;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <span class="section-title">Idiomas</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="lang-row">
+          <span class="lang-name">Português</span>
+          <span class="lang-level native">Nativo</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Inglês</span>
+          <span class="lang-level adv">Avançado</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Espanhol</span>
+          <span class="lang-level adv">Avançado</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ─── MAIN ─── -->
+    <main class="main">
+
+      <!-- Summary -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#f0f9ff;">
+            <svg viewBox="0 0 24 24" style="stroke:#0ea5e9;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <span class="section-title">Resumo Profissional</span>
+          <div class="section-line"></div>
+        </div>
+        <div class="summary-card">
+          <p>
+            Desenvolvedor Front-end em início de carreira com sólida base prática em <strong>React + TypeScript</strong>, <strong>Tailwind CSS</strong>
+            e ecossistema moderno (Vite, TanStack Query, React Hook Form + Zod, Vitest). Construiu quatro projetos completos
+            com cenários reais de produto — e-commerce, dashboard administrativo, chat em tempo real e kit de observabilidade —
+            sempre com foco em <strong>UX, acessibilidade, testes e arquitetura de estado/cache</strong>.
+            Trilingue (PT · EN · ES). Busca oportunidade remota de <strong>estágio ou júnior Front-end</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#faf5ff;">
+            <svg viewBox="0 0 24 24" style="stroke:#8b5cf6;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="section-title">Projetos</span>
+          <div class="section-line"></div>
+        </div>
+
+        <!-- NeonShop -->
+        <div class="project-card">
+          <div class="project-top">
+            <div class="project-accent" style="background:linear-gradient(180deg,#3b82f6,#06b6d4);"></div>
+            <div class="project-body">
+              <div class="project-head">
+                <span class="project-name">NEONSHOP — Futuristic E-commerce</span>
+                <span class="project-stack">React · TypeScript · Vercel</span>
+              </div>
+              <div class="project-badges">
+                <span class="pbadge">Catálogo + Busca/Filtros</span>
+                <span class="pbadge">Carrinho + LocalStorage</span>
+                <span class="pbadge">Checkout + Validação</span>
+                <span class="pbadge">A11y + UX States</span>
+                <span class="pbadge">Testes</span>
+              </div>
+              <ul class="project-bullets">
+                <li>Catálogo responsivo com skeleton loading, filtros multi-critério (categoria, preço, ordenação) e página de detalhes.</li>
+                <li>Carrinho com persistência em LocalStorage e fluxo de checkout simulado com validação de formulário e confirmação de pedido.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-links">
+            <a class="plink" href="https://neonshop.vercel.app">
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Demo
+            </a>
+            <a class="plink" href="https://github.com/filipedosreissantos/PROJETOS/tree/c0121ed5155596d3bd48d06520e64aec2da44d41/ecommerce-front">
+              <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Repositório
+            </a>
+          </div>
+        </div>
+
+        <!-- Admin Dashboard + Nile Chat (side by side) -->
+        <div class="project-grid">
+
+          <!-- Admin Dashboard -->
+          <div class="project-card">
+            <div class="project-top">
+              <div class="project-accent" style="background:linear-gradient(180deg,#8b5cf6,#ec4899);"></div>
+              <div class="project-body">
+                <div class="project-head">
+                  <span class="project-name">Admin Dashboard</span>
+                  <span class="project-stack">React · TS · json-server</span>
+                </div>
+                <div class="project-badges">
+                  <span class="pbadge">Auth + Rotas protegidas</span>
+                  <span class="pbadge">CRUD completo</span>
+                  <span class="pbadge">Paginação/Filtros</span>
+                  <span class="pbadge">RHF + Zod</span>
+                  <span class="pbadge">Testes</span>
+                </div>
+                <ul class="project-bullets">
+                  <li>Login, proteção de rotas e sessão em LocalStorage.</li>
+                  <li>CRUD com modais e validação via TanStack Query.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="project-links">
+              <a class="plink" href="https://github.com/filipedosreissantos/PROJETOS/tree/c0121ed5155596d3bd48d06520e64aec2da44d41/admin-dashboard">
+                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                Repositório
+              </a>
+            </div>
+          </div>
+
+          <!-- Nile Chat -->
+          <div class="project-card">
+            <div class="project-top">
+              <div class="project-accent" style="background:linear-gradient(180deg,#06b6d4,#22c55e);"></div>
+              <div class="project-body">
+                <div class="project-head">
+                  <span class="project-name">Nile Chat — Chat UI</span>
+                  <span class="project-stack">Real-time sim · Vercel</span>
+                </div>
+                <div class="project-badges">
+                  <span class="pbadge">FakeSocket</span>
+                  <span class="pbadge">Optimistic updates</span>
+                  <span class="pbadge">Infinite scroll</span>
+                  <span class="pbadge">Cache persistente</span>
+                </div>
+                <ul class="project-bullets">
+                  <li>Typing indicator, atualizações otimistas e scroll infinito.</li>
+                  <li>Query keys e cache para threads e mensagens.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="project-links">
+              <a class="plink" href="https://nile-chat.vercel.app">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Demo
+              </a>
+              <a class="plink" href="https://github.com/filipedosreissantos/PROJETOS/tree/c0121ed5155596d3bd48d06520e64aec2da44d41/chat-ui">
+                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                Repositório
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Observability Kit -->
+        <div class="project-card" style="margin-top:10px;">
+          <div class="project-top">
+            <div class="project-accent" style="background:linear-gradient(180deg,#f97316,#eab308);"></div>
+            <div class="project-body">
+              <div class="project-head">
+                <span class="project-name">Observability Kit</span>
+                <span class="project-stack">Errors · Logs · Web Vitals</span>
+              </div>
+              <div class="project-badges">
+                <span class="pbadge">Error Boundary</span>
+                <span class="pbadge">Logger "Sentry-style"</span>
+                <span class="pbadge">Web Vitals</span>
+                <span class="pbadge">Páginas 404/500/offline</span>
+              </div>
+              <ul class="project-bullets">
+                <li>Kit de observabilidade para apps React: logger, métricas de performance e páginas de erro personalizadas.</li>
+                <li>Dashboard admin para visualizar logs e performance com sanitização e correlação por sessão.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-links">
+            <a class="plink" href="https://github.com/filipedosreissantos/PROJETOS/tree/c0121ed5155596d3bd48d06520e64aec2da44d41/observability-kit">
+              <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Repositório
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /section projects -->
+
+    </main>
+  </div><!-- /body -->
+
+</div><!-- /page -->
+</div><!-- /shell -->
+<!-- To export as PDF: open in browser → Ctrl+P / Cmd+P → Save as PDF (A4, no margins) -->
+</body>
+</html>
